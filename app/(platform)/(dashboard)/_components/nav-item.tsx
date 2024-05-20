@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export type Organization = {
   id: string;
@@ -69,13 +70,33 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
       </AccordionTrigger>
       <AccordionContent className='pt-1 text-neutral-700'>
         {routes.map((route) => (
-          <Button key={route.href} size='sm' variant='ghost' onClick={() => onClick(route.href)} className={cn('w-full font-normal justify-start pl-10 mb-1', pathname === route.href && 'bg-emerald-500/10 text-emerald-600')}>
+          <Button
+            key={route.href}
+            size='sm'
+            variant='ghost'
+            onClick={() => onClick(route.href)}
+            className={cn(
+              'w-full font-normal justify-start pl-10 mb-1',
+              pathname === route.href && 'bg-emerald-500/10 text-emerald-600'
+            )}
+          >
             {route.icon}
             {route.label}
           </Button>
         ))}
       </AccordionContent>
     </AccordionItem>
+  );
+};
+
+NavItem.Skeleton = function SkeletonNavItem() {
+  return (
+    <div className='flex items-center gap-x-2'>
+      <div className='w-10 h-10 shrink-0 relative'>
+        <Skeleton className='h-full w-full absolute' />
+      </div>
+      <Skeleton className='h-10 w-full' />
+    </div>
   );
 };
 

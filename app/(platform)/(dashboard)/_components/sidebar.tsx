@@ -39,7 +39,15 @@ const SideBar = ({ storageKey }: SidebarProps) => {
   if (!isLoadOrg || !isLoadOrgList || userMemberships.isLoading) {
     return (
       <>
-        <Skeleton />
+        <div className='flex items-center justify-between mb-2'>
+          <Skeleton className='h-10 w-[50%]' />
+          <Skeleton className='h-10 w-10' />
+        </div>
+        <div className='space-y-2'>
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
       </>
     );
   }
@@ -54,7 +62,7 @@ const SideBar = ({ storageKey }: SidebarProps) => {
           </Link>
         </Button>
       </div>
-      <Accordion type='multiple' defaultValue={defaultAccordionValue}>
+      <Accordion type='multiple' defaultValue={defaultAccordionValue} className='space-y-2'>
         {userMemberships.data.map(({ organization }) => (
           <NavItem
             key={organization.id}
@@ -62,7 +70,6 @@ const SideBar = ({ storageKey }: SidebarProps) => {
             isExpanded={expanded[organization.id]}
             organization={organization as Organization}
             onExpand={onExpand}
-            // href={`/select-org/${organization.id}`}
           />
         ))}
       </Accordion>

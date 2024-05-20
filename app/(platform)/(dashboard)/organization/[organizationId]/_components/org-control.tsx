@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { OrganizationList, useOrganizationList } from '@clerk/nextjs';
+import { useOrganizationList } from '@clerk/nextjs';
 
 export const OrgControl = () => {
   const { organizationId } = useParams();
