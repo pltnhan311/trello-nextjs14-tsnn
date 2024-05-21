@@ -1,4 +1,4 @@
-import { OrganizationList, OrganizationProfile } from '@clerk/nextjs'
+import { OrganizationList, OrganizationProfile } from '@clerk/nextjs';
 
 export default function CreateOrganizationPage() {
   return (
@@ -7,6 +7,6 @@ export default function CreateOrganizationPage() {
     //   afterCreateOrganizationUrl='/organization/:id'
     //   afterSelectOrganizationUrl='/organization/:id'
     // />
-    <OrganizationProfile path="/select-org" />
-  )
+    <OrganizationProfile path='/select-org' />
+  );
 }
