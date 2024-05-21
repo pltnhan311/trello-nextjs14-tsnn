@@ -1,3 +1,5 @@
+DATABASE_URL="mysql://avnadmin:AVNS_EKOJ2XX8BsWX_1W1cTD@trello-nextjs14-trello-nextjs14.g.aivencloud.com:15739/defaultdb?ssl-mode=REQUIRED"
+
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZGVhci1wb2xsaXdvZy00My5jbGVyay5hY2NvdW50cy5kZXYk
 CLERK_SECRET_KEY=sk_test_lid7SiWtKmXp0UrBp7SkQP5kk7HCznncLw9nNcxxhe
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
