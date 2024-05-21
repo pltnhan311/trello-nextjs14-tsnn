@@ -1,23 +1,31 @@
 'use client';
 
-import { State, create } from '@/actions/create-board';
+import { createBoard } from '@/actions/create-board';
 import { FormButton } from '@/app/(platform)/(dashboard)/organization/[organizationId]/form-button';
 import { FormInput } from '@/app/(platform)/(dashboard)/organization/[organizationId]/form-input';
-import { Button } from '@/components/ui/button';
-import { useFormState } from 'react-dom';
+import { useAction } from '@/hooks/use-action';
+
 
 export const Form = () => {
-  const initialState: State = {
-    message: null,
-    errors: {}
+  const { execute, fieldErrors } = useAction(createBoard, {
+    onSuccess: (data) => {
+      console.log(data, 'SUCCESS');
+    },
+    onError: (data) => {
+      console.log(data, 'ERROR');
+    }
+  });
+  const onSubmit = (formData: FormData) => {
+    const title = formData.get('title') as string;
+
+    execute({ title });
   };
-  const [state, dispatch] = useFormState(create, initialState);
 
   return (
-    <form action={dispatch}>
+    <form action={onSubmit}>
       <div className='flex space-x-2'>
         <div className='flex flex-col space-y-2'>
-          <FormInput errors={state?.errors} />
+          <FormInput errors={fieldErrors} />
         </div>
         <FormButton />
       </div>
