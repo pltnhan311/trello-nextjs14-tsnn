@@ -34,7 +34,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     board = await db.board.create({
       data: {
         title,
-        // @ts-expect-error
         orgId,
         imageId,
         imageThumbUrl,
